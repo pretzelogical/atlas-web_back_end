@@ -5,8 +5,8 @@
 def add(a: float, b: float) -> float:
     """
     Add two numbers
-    :a: first number
-    :b: second number
-    :return: sum of a and b
+    : a(float) : first number
+    : b(float) : second number
+    : return(float) : sum of a and b
     """
     return a + b

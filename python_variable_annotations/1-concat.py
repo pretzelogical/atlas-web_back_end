@@ -5,8 +5,8 @@
 def concat(str1: str, str2: str) -> str:
     """
     Concatenates two strings
-    :str1: first string
-    :str2: second string
-    :return: concatenated string
+    : str1(str) : first string
+    : str2(str) : second string
+    : return(str) : concatenated string
     """
     return str1 + str2
