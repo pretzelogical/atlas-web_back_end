@@ -12,13 +12,9 @@ async def task_wait_n(n: int, max_delay: int) -> list[float]:
     : max_delay(int) : maximum delay to create
     : return(list[float]) : list of delays in ascending order.
     """
-    tasks = []
+    tasks = [task_wait_random(max_delay) for _ in range(n)]
     delays = []
-    sorted_delays = []
-    for i in range(n):
-        tasks.append(task_wait_random(max_delay))
-    delays = await asyncio.gather(*tasks)
-    for i in range(n):
-        sorted_delays.append(min(delays))
-        delays.remove(min(delays))
-    return sorted_delays
+    for future in asyncio.as_completed(tasks):
+        delay = await future
+        delays.append(delay)
+    return delays
