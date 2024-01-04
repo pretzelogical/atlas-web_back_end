@@ -13,6 +13,12 @@ async def task_wait_n(n: int, max_delay: int) -> list[float]:
     : return(list[float]) : list of delays in ascending order.
     """
     tasks = []
+    delays = []
+    sorted_delays = []
     for i in range(n):
         tasks.append(task_wait_random(max_delay))
-    return sorted(await asyncio.gather(*tasks))
+    delays = await asyncio.gather(*tasks)
+    for i in range(n):
+        sorted_delays.append(min(delays))
+        delays.remove(min(delays))
+    return sorted_delays
