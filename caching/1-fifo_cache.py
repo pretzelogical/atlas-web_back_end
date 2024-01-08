@@ -20,7 +20,9 @@ class FIFOCache(BaseCaching):
         self.queue.put(key)
         self.cache_data[key] = item
         if len(self.cache_data) > BaseCaching.MAX_ITEMS:
-            self.cache_data.pop(self.queue.get())
+            discard_key = self.queue.get()
+            print(f"DISCARD: {discard_key}")
+            self.cache_data.pop(discard_key)
 
     def get(self, key):
         """ Get an item by it's key """
