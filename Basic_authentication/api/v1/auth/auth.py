@@ -7,7 +7,9 @@ from typing import List, TypeVar
 class Auth:
     """ Auth class """
     def require_auth(self, path: str, excluded_paths: List[str]) -> bool:
-        """ Require auth method """
+        """ Require auth method. Slash tolerant"""
+        if path[-1] != '/':
+            path += '/'
         if path is None or excluded_paths is None or excluded_paths == []:
             return True
         if path in excluded_paths:
