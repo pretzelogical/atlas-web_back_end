@@ -52,14 +52,17 @@ class BasicAuth(Auth):
             return None
         if user_pwd is None or not isinstance(user_pwd, str):
             return None
-        from models.user import User
-        user = User.search({'email': user_email})
-        if user == []:
+        try:
+            from models.user import User
+            users = User.search({'email': user_email})
+            if users == []:
+                return None
+            for user in users:
+                if user.is_valid_password(user_pwd):
+                    return user
+        except Exception:
             return None
-        user = user[0]
-        if not user.is_valid_password(user_pwd):
-            return None
-        return user
+        return None
 
     def current_user(self, request=None) -> TypeVar('User'):
         """ Gets the current user for this request """
