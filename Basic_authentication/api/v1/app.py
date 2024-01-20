@@ -19,10 +19,8 @@ auth = None
 
 if os.getenv("AUTH_TYPE") == "auth":
     auth = Auth()
-    print("auth enabled")
 if os.getenv("AUTH_TYPE") == "basic_auth":
     auth = BasicAuth()
-    print("basic auth enabled")
 
 
 @app.errorhandler(404)
