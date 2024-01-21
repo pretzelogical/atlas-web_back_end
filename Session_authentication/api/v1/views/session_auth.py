@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """ Session authentication module """
 from api.v1.views import app_views
-from flask import request, jsonify, make_response
+from flask import request, jsonify, make_response, abort
 from models.user import User
 import os
 
@@ -34,3 +34,16 @@ def login():
     response.set_cookie(os.environ.get('SESSION_NAME', '_my_session_id'),
                         session_id)
     return response
+
+
+@app_views.route('/auth_session/logout', methods=['DELETE'],
+                 strict_slashes=False)
+def logout():
+    """
+        End a session by removing the session id
+    """
+    from api.v1.app import auth
+    dest_res = auth.destroy_session(request)
+    if dest_res is False:
+        abort(404)
+    return make_response(jsonify({}), 200)
