@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """ Session authentication module """
-from api.v1.app import app_views
+from api.v1.views import app_views
 from flask import request, jsonify, make_response
 from models.user import User
 import os
