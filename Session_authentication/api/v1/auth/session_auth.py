@@ -33,7 +33,7 @@ class SessionAuth(Auth):
         usr_id = self.user_id_for_session_id(ses_cookie)
         if usr_id is None:
             return False
-        del self.user_id_by_session_id[usr_id]
+        del self.user_id_by_session_id[ses_cookie]
         return True
 
     def user_id_for_session_id(self, session_id: str = None) -> str:
