@@ -17,7 +17,7 @@ def login():
         return make_response(jsonify({"error": "email missing"}), 400)
     if usr_pass is None:
         return make_response(jsonify({"error": "password missing"}), 400)
-    users = User.search(usr_email)
+    users = User.search({'email': usr_email})
     if users == []:
         return make_response(
             jsonify({"error": "no user found for this email"}), 404)
