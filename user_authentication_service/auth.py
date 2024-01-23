@@ -12,7 +12,7 @@ def _hash_password(password: str) -> bytes:
     return bcrypt.hashpw(password.encode(), bcrypt.gensalt())
 
 
-def _generate_uuid():
+def _generate_uuid() -> str:
     """ Generate string uuid for auth class """
     return str(uuid.uuid4())
 
