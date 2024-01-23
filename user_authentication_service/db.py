@@ -45,7 +45,7 @@ class DB:
         self._session.commit()
         return new_user
 
-    def find_user_by(self, **kwargs):
+    def find_user_by(self, **kwargs) -> User:
         """
             Finds first user in db by kwargs
             Raises NoResultFound if no result are found
