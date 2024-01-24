@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """ Basic flask app """
-from flask import Flask, jsonify, request, make_response
+from flask import Flask, jsonify, request, make_response, abort
 from auth import Auth
 
 
@@ -30,7 +30,7 @@ def users():
         ), 400)
 
 
-@app.route('/session', methods=["POST"], strict_slashes=False)
+@app.route('/sessions', methods=["POST"], strict_slashes=False)
 def session():
     """ Create session """
     email = request.form.get("email", "")
@@ -40,7 +40,7 @@ def session():
         response = jsonify({"email": email, "message": "logged in"})
         response.set_cookie("session_id", session_id)
         return response
-    return make_response(jsonify({"message": "wrong email or password"}), 401)
+    abort(401)
 
 
 if __name__ == "__main__":
