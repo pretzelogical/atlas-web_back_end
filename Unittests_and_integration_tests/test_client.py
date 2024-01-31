@@ -50,9 +50,9 @@ class TestGithubOrgClient(unittest.TestCase):
             mock_get_json.assert_called_once_with("https://www.internet.com")
             mock_public_repos_url.assert_called_once()
 
-    @parameterized([
-        ({"license", {"key", "my_license"}}, "my_license", True),
-        ({"license", {"key", "other_license"}}, "my_license", False)
+    @parameterized.expand([
+        ({"license": {"key": "my_license"}}, "my_license", True),
+        ({"license": {"key": "other_license"}}, "my_license", False)
     ])
     def test_has_license(self, repo, license_key, result):
         """ Test has license """
