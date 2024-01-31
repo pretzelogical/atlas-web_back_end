@@ -48,12 +48,14 @@ class TestGetJson(unittest.TestCase):
         mock_get.return_value.json.return_value = {"payload": True}
         self.assertEqual(utils.get_json(
             "http://example.com"), {"payload": True})
-        mock_get.assert_called_with("http://example.com")
+        mock_get.assert_called_once_with("http://example.com")
+
+        mock_get.reset_mock()
 
         mock_get.return_value.json.return_value = {"payload": False}
         self.assertEqual(utils.get_json(
             "http://holberton.io"), {"payload": False})
-        mock_get.assert_called_with("http://holberton.io")
+        mock_get.assert_called_once_with("http://holberton.io")
 
 
 class TestMemoize(unittest.TestCase):
