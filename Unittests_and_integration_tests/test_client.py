@@ -4,6 +4,7 @@ import unittest
 from unittest.mock import patch, PropertyMock
 from parameterized import parameterized
 from client import GithubOrgClient
+# from fixtures import TEST_PAYLOAD
 
 
 class TestGithubOrgClient(unittest.TestCase):
@@ -58,3 +59,14 @@ class TestGithubOrgClient(unittest.TestCase):
         """ Test has license """
         is_haz_licenze = GithubOrgClient.has_license(repo, license_key)
         self.assertEqual(is_haz_licenze, result)
+
+
+# @parameterized_class()
+# class TestIntegrationGithubOrgClient(unittest.TestCase):
+#     """
+#         Integration test GithubOrgClient.public_repos
+#     """
+
+#     @classmethod
+#     def setUpClass(cls) -> None:
+#         return super().setUpClass()
