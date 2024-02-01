@@ -5,14 +5,16 @@ from flask_babel import Babel
 from os import getenv
 
 
-app = Flask(__name__)
-
-
 class Config:
     """ Class that holds configuration values for babel """
     BABEL_DEFAULT_LOCALE = 'en'
     BABEL_DEFAULT_TIMEZONE = 'UTC'
     LANGUAGES = ['en', 'fr']
+
+
+app = Flask(__name__)
+app.config.from_object(Config)
+babel = Babel(app)
 
 
 def get_locale():
@@ -23,15 +25,14 @@ def get_locale():
     return locale
 
 
-app.config.from_object(Config)
-babel = Babel(app)
 babel.init_app(app, locale_selector=get_locale)
 
 
 @app.route('/', strict_slashes=False)
 def root():
     """ Root route """
-    return render_template("3-index.html")
+    locale = get_locale()
+    return render_template("4-index.html", locale=locale)
 
 
 if __name__ == "__main__":
