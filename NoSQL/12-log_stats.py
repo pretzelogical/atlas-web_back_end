@@ -12,7 +12,7 @@ def log_clients():
     print("Methods:")
     for method in methods:
         num_method = client.logs.nginx.count_documents({"method": method})
-        print(f"\t method {method}: {num_method}")
+        print(f"\tmethod {method}: {num_method}")
     status_check = client.logs.nginx.count_documents(
         {"method": "GET", "path": "/status"}
         )
