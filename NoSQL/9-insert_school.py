@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """ Function insert_school this inserts a new document in a collection """
 
 
