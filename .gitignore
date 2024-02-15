@@ -166,3 +166,4 @@ cython_debug/
 .db_User.json
 a.db
 a.db-journal
+names.sql
