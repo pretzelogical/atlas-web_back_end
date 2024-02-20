@@ -167,3 +167,4 @@ cython_debug/
 a.db
 a.db-journal
 names.sql
+node_modules/
