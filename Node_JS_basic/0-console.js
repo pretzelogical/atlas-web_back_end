@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
-module.exports = function displayMessage(messsage) {
+function displayMessage(messsage) {
   console.log(messsage);
-};
+}
+
+module.exports = displayMessage;
