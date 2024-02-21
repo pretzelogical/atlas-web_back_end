@@ -7,7 +7,8 @@ function countStudents(path) {
     }
 
     const databaseBytes = fs.readFileSync(path);
-    const database = databaseBytes.toString().split('\n');
+    const database = (databaseBytes.toString().split('\n'))
+      .filter((elem) => elem.trim() !== '');
     let lineNum = 0;
     let fields = {};
 
