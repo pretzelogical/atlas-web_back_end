@@ -10,25 +10,17 @@ function countStudents(path) {
   const database = (databaseBytes.toString().split('\n'))
     .filter((elem) => elem.trim() !== '');
   let lineNum = 0;
-  let fields = {};
+  const fields = { CS: [], SWE: [] };
 
-  for (const entry of database) {
-    if (lineNum === 0) {
-      lineNum++;
-      continue;
+  console.log(`Number of students: ${database.length - 1}`);
+  for (let i = 1; i < database.length; i++) {
+    const entry = database[i].split(',');
+    if (entry[entry.length - 1] in fields) {
+      fields[entry[entry.length - 1]].push(entry[0]);
     }
-    const student = entry.split(',');
-    const studentField = student[student.length - 1];
-    if (studentField in fields) {
-      fields[studentField].push(student[0]);
-    } else {
-      fields[studentField] = [student[0]];
-    }
-    lineNum++;
   }
   const csStudents = fields.CS.join(', ');
   const sweStudents = fields.SWE.join(', ');
-  console.log(`Number of students: ${lineNum - 1}`);
   console.log(
     `Number of students in CS: ${fields.CS.length}. List: ${csStudents}`
   );
