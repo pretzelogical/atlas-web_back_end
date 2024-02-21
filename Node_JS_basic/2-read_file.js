@@ -12,12 +12,12 @@ function countStudents(path) {
   let fields = {};
 
   for (const entry of database) {
-    if (lineNum == 0) {
+    if (lineNum === 0) {
       lineNum++;
       continue;
     }
-    student = entry.split(",");
-    studentField = student[student.length - 1];
+    const student = entry.split(",");
+    const studentField = student[student.length - 1];
     if (studentField in fields) {
       fields[studentField].push(student[0]);
     } else {
@@ -25,14 +25,14 @@ function countStudents(path) {
     }
     lineNum++;
   }
-  const csStudents = fields["CS"].join(", ");
-  const sweStudents = fields["SWE"].join(", ");
+  const csStudents = fields.CS.join(", ");
+  const sweStudents = fields.SWE.join(", ");
   console.log(`Number of students: ${lineNum - 1}`);
   console.log(
-    `Number of students in CS: ${fields["CS"].length}. List: ${csStudents}`
+    `Number of students in CS: ${fields.CS.length}. List: ${csStudents}`
   );
   console.log(
-    `Number of students in SWE: ${fields["SWE"].length}. List: ${sweStudents}`
+    `Number of students in SWE: ${fields.SWE.length}. List: ${sweStudents}`
   );
 }
 
