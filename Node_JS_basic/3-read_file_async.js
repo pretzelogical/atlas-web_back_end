@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-const fs = require('fs/promises');
+const fs = require('fs').promises;
 
 async function countStudents(path) {
   try {
