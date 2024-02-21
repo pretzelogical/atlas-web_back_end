@@ -8,7 +8,8 @@ async function countStudents(path) {
   } catch (e) {
     throw new Error('Cannot load the database');
   }
-  const database = (await fs.readFile(path)).toString().split('\n');
+  const database = ((await fs.readFile(path)).toString().split('\n'))
+    .filter((elem) => elem.trim() !== '');
   const fields = { CS: [], SWE: [] };
 
   for (let i = 1; i < database.length; i++) {
@@ -21,9 +22,9 @@ async function countStudents(path) {
   const studentsSWE = fields.SWE.join(', ');
   return [
     'This is the list of our students',
-    `Number of students ${database.length - 1}`,
-    `Number of students in CS: ${fields.CS.length} List: ${studentsCS}`,
-    `Number of students in SWE: ${fields.SWE.length} List: ${studentsSWE}`
+    `Number of students: ${database.length - 1}`,
+    `Number of students in CS: ${fields.CS.length}. List: ${studentsCS}`,
+    `Number of students in SWE: ${fields.SWE.length}. List: ${studentsSWE}`
   ];
 }
 
