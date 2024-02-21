@@ -18,13 +18,13 @@ async function countStudents(path) {
       fields[entry[entry.length - 1]].push(entry[0]);
     }
   }
-  const studentsCS = fields['CS'].join(', ');
-  const studentsSWE = fields['SWE'].join(', ');
+  const studentsCS = fields.CS.join(', ');
+  const studentsSWE = fields.SWE.join(', ');
   console.log(
-    `Number of students in CS: ${fields['CS'].length}. List: ${studentsCS}`
+    `Number of students in CS: ${fields.CS.length}. List: ${studentsCS}`
   );
   console.log(
-    `Number of students in CS: ${fields['SWE'].length}. List: ${studentsSWE}`
+    `Number of students in CS: ${fields.SWE.length}. List: ${studentsSWE}`
   );
 }
 

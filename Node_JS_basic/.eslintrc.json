@@ -29,9 +29,9 @@
             "error",
             "always"
         ],
-        "space-before-function-paren": [
+        "dot-notation": [
             "error",
-            "always"
+            {}
         ]
     }
 }
