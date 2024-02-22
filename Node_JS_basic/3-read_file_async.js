@@ -24,7 +24,7 @@ async function countStudents(path) {
     `Number of students in CS: ${fields.CS.length}. List: ${studentsCS}`
   );
   console.log(
-    `Number of students in CS: ${fields.SWE.length}. List: ${studentsSWE}`
+    `Number of students in SWE: ${fields.SWE.length}. List: ${studentsSWE}`
   );
 }
 
