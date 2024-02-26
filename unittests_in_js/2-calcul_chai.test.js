@@ -1,8 +1,9 @@
-import { expect } from 'chai';
-import calculateNumber from './2-calcul_chai.js';
+// import { expect } from 'chai';
+// import calculateNumber from './2-calcul_chai.js';
 // const assert = require('chai').assert;
-// const expect = require('chai').expect;
-// const calculateNumber = require('./2-calcul_chai.js');
+const chai = require('chai');
+const expect = chai.expect;
+const calculateNumber = require('./2-calcul_chai.js');
 
 describe('calculateNumber', function () {
   it('should round numbers from float to integer', function () {
