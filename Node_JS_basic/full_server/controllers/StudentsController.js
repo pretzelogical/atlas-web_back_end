@@ -5,11 +5,12 @@ export default class StudentsController {
   static async getAllStudents(request, response) {
     response.set('Content-Type', 'text/plain');
     try {
-      const database = await readDatabase(process.argv[2]);
+      await fs.access(process.argv[2], fs.constants.F_OK | fs.constants.R_OK);
     } catch (err) {
       response.status(500).send('Cannot load the database');
       return;
     }
+    const database = await readDatabase(process.argv[2])
     const message = ['This is the list of our students'];
 
     for (const field in database) {
@@ -22,12 +23,13 @@ export default class StudentsController {
   static async getAllStudentsByMajor(request, response) {
     response.set('Content-Type', 'text/plain');
     try {
-      const database = await readDatabase(process.argv[2]);
+      await fs.access(process.argv[2], fs.constants.F_OK | fs.constants.R_OK);
     } catch (err) {
       response.status(500).send('Cannot load the database');
       return;
     }
     const major = request.params.major;
+    const database = await readDatabase(process.argv[2]);
     if (!['CS', 'SWE'].includes(major)) {
       response.status(500).send('Major parameter must be CS or SWE');
       return;
