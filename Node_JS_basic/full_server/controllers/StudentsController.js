@@ -10,7 +10,7 @@ export default class StudentsController {
       response.status(500).send('Cannot load the database');
       return;
     }
-    const database = await readDatabase(process.argv[2])
+    const database = await readDatabase(process.argv[2]);
     const message = ['This is the list of our students'];
 
     for (const field in database) {
