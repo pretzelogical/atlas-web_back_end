@@ -1,4 +1,5 @@
 import readDatabase from '../utils';
+import fs from 'fs/promises';
 
 export default class StudentsController {
   static async getAllStudents(request, response) {
