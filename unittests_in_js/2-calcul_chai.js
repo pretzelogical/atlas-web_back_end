@@ -1,4 +1,4 @@
-export default function calculateNumber(type, a, b) {
+function calculateNumber(type, a, b) {
   a = Math.round(a);
   b = Math.round(b);
   const ops = {
@@ -16,3 +16,5 @@ export default function calculateNumber(type, a, b) {
   }
   return ops[type](a, b);
 }
+
+module.exports = calculateNumber;
