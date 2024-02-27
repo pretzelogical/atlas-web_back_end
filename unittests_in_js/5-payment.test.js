@@ -1,7 +1,6 @@
 const sendPaymentRequestToApi = require('./4-payment');
 const expect = require('chai').expect;
 const sinon = require('sinon');
-const Utils = require('./utils.js');
 
 describe('sendPaymentRequestToAPI', () => {
   beforeEach(() => {
