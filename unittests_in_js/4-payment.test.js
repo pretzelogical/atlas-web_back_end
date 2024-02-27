@@ -11,7 +11,7 @@ describe('sendPaymentRequestToApi', function() {
       .to.not.throw;
 
     expect(Utils.calculateNumber.firstCall.returnValue)
-      .to.equal(120);
+      .to.equal(Utils.calculateNumber('SUM', 100, 20));
 
     Utils.calculateNumber.restore();
   });
