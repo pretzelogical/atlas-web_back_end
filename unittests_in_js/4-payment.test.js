@@ -20,7 +20,10 @@ describe('sendPaymentRequestToApi', function() {
     sinon.stub(Utils, 'calculateNumber').returns(10);
     sinon.spy(console, 'log');
 
-    expect(Utils.calculateNumber('SUM', 100, 20)).to.equal(10);
+    expect(sendPaymentRequestToApi(100, 20))
+      .to.not.throw;
+    expect(Utils.calculateNumber.firstCall.args)
+      .to.eql(["SUM", 100, 20]);
     expect(console.log.calledWith('The total is: 10'));
 
     Utils.calculateNumber.restore();
