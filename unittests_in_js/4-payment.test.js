@@ -24,7 +24,7 @@ describe('sendPaymentRequestToApi', function() {
       .to.not.throw;
     expect(Utils.calculateNumber.firstCall.args)
       .to.eql(["SUM", 100, 20]);
-    expect(console.log.calledWith('The total is: 10'));
+    expect(console.log.calledWith('The total is: 10')).to.eql(true);
 
     Utils.calculateNumber.restore();
     console.log.restore();
