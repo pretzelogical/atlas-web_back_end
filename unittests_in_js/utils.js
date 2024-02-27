@@ -1,17 +1,22 @@
 const Utils = {
-    calculateNumber: function (type, a, b) {
-      switch (type) {
-        case 'SUM':
-          return Math.round(a) + Math.round(b) + 40;
-        case 'SUBTRACT':
-          return Math.round(a) - Math.round(b);
-        case 'DIVIDE':
-          if (Math.round(b) === 0) {
-            return 'ERROR';
-          }
-          return Math.round(a) / Math.round(b);
+  calculateNumber(type, a, b) {
+    a = Math.round(a);
+    b = Math.round(b);
+    const ops = {
+      'SUM': () => a + b,
+      'SUBTRACT': () => a - b,
+      'DIVIDE': () => {
+        if (b <= 0) {
+          return 'Error';
+        }
+        return a / b;
       }
     }
+    if (type in ops === false) {
+      throw new Error('Type must be SUM, SUBTRACT or DIVIDE');
+    }
+    return ops[type](a, b);
+  }
 }
 
 module.exports = Utils;
