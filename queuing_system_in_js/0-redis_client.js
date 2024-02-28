@@ -1,9 +1,9 @@
-const redis = require('redis');
+import { createClient } from 'redis';
 
 async function main() {
-  const client = await redis.createClient()
-    .on('error', (err) => console.log('Redis client not connected to the server', err))
-    .connect();
+  const client = await createClient().connect();
+
+  console.log(client);
 
   const pong = await client.ping();
 
